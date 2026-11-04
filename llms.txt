@@ -1,0 +1,43 @@
+# javaabu/bulk-actions
+
+> Fluent bulk actions for Laravel index pages. Define the actions of a listing once (a class extending Javaabu\BulkActions\BulkActions), authorize each with can() (who may run it) and canEach() (which records, through the model's policy) via Laravel's Gate, ask for input with a javaabu/stencil form, and run them on the selected records or on every record matching the listing's filters (javaabu/filters, optional), chunked and queued for large selections with polled progress. The selection and action UI is built on javaabu/forms' table in Blade (<x-bulk-actions::actions>) and @javaabu/forms' Table in Inertia React (BulkActionsTable from @javaabu/bulk-actions). Dhivehi and RTL built in.
+
+Paths are relative to this file. In a project, that's vendor/javaabu/bulk-actions/.
+
+## Rules
+
+- Define a listing's actions in a class that extends `Javaabu\BulkActions\BulkActions`, with `protected ?string $model` and `actions()`. Inline `BulkActions::make([...])` can't be queued.
+- Build actions with `Action::make('name')->label(__('…'))->handle(fn (Collection $records) => …)` or `->each(fn (Article $article) => …)`. Use the built-in `DeleteAction`, `RestoreAction` and `ForceDeleteAction` instead of writing your own.
+- Authorize with `->can('permission_or_ability', $arguments)` (hides the action and 403s) and `->canEach('update')` (checked per record with the policy; failing records are skipped). Never rely on `visible()`/`hidden()` for security.
+- Scope which records may be selected by overriding `newQuery()` (or `->query()`), not inside the handler. Ids outside the query are ignored.
+- Ask for input with `->form([stencil fields])`; the handler gets the validated values as `$data`. Don't read `$request` in handlers. Don't name fields `action`, `all`, `filters`, `redirect` or the selection's name.
+- Register routes yourself: `Route::bulkActions('articles', ArticleBulkActions::class)` (POST articles/bulk) and `Route::bulkActionRuns()` inside the app's route group; pass `guard` for other guards.
+- Blade: put `<x-bulk-actions::actions :actions="$bulk_actions" :paginator="$articles" />` in the `bulk-form` slot of `<x-forms::table model="articles">`, with `:action="$bulk_actions->getUrl()"`. React: pass `ArticleBulkActions::make()->paginator($articles)` as a prop and render `<BulkActionsTable bulkActions={bulkActions}>`.
+- For "select all matching", give the class the listing's filters: `$this->filters(ArticleFilters::class)` (javaabu/filters) or a closure `fn (Builder $query, array $filters) => …`, and pass the paginator so the UI knows the total.
+- Selections above `bulk-actions.queue_after` (500) are queued: run a queue worker, schedule `model:prune` for `BulkActionRun`, run `php artisan permissions:sync`. Use `->queue(false)` for actions that can't be queued (file uploads).
+- Labels, confirmation questions and success messages go through `__()`; add Dhivehi to `lang/dv.json`. Use Thaana in tests of user-facing behaviour.
+- Test through the route: `postJson(route('articles.bulk'), ['action' => 'publish', 'articles' => [...]])` and assert on `succeeded`, `skipped`, `failed`.
+
+## Docs
+
+- [Introduction](docs/intro.md): what the package does
+- [Requirements](docs/requirements.md): PHP, Laravel, forms, stencil, permissions, manifest and optional packages
+- [Installation & Setup](docs/installation-and-setup.md): installing, routes, Blade and React setup, the queue, publishing
+- [AI assistants](docs/ai-assistants.md): Laravel Boost and these docs
+- [Defining actions](docs/basic-usage/defining-actions.md): classes and inline, the records, actions, handlers, messages, built-in actions
+- [Authorization](docs/basic-usage/authorization.md): can(), canEach(), visibility, scoping, the user
+- [Actions with forms](docs/basic-usage/actions-with-forms.md): stencil forms, validation, $data, field names
+- [Running actions](docs/basic-usage/running-actions.md): routes, the request, chunking and queueing, the response, events
+- [Blade](docs/basic-usage/blade.md): the component in javaabu/forms' table, what it shows, the script
+- [Inertia React](docs/basic-usage/react.md): BulkActionsTable, how it submits, the parts
+- [Selecting all matching records](docs/advanced-usage/selecting-all-matching.md): javaabu/filters, closures, authorization
+- [Queued runs](docs/advanced-usage/queued-runs.md): the job, BulkActionRun, status and cancelling, the policy, pruning
+- [Configuration](docs/advanced-usage/configuration.md): every config option
+- [Overriding controllers and views](docs/advanced-usage/overriding-controllers-and-views.md): controllers, the policy, Blade views, React components
+- [Testing](docs/advanced-usage/testing.md): testing bulk actions in an app
+- [Dhivehi and RTL](docs/advanced-usage/dhivehi-and-rtl.md): strings, right to left, translations for review
+- [API reference](docs/advanced-usage/api-reference.md): every PHP class, the React props and the JavaScript exports
+- [Questions and Security](docs/questions-and-security.md): where to get help
+- [Changelog](docs/changelog.md): where changes are listed
+- [About Us](docs/about-us.md): Javaabu
+- [Contributing to the docs](docs/contributing-to-docs.md): how the docs are built

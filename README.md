@@ -7,14 +7,52 @@
 
 Fluent bulk actions for Laravel index pages. Each action is authorized through Laravel's Gate, can ask for input with a [stencil](https://github.com/Javaabu/stencil) form, and runs on the selected records or on everything matching the current filters, chunked and queued for large selections. The selection and action UI ships for Blade ([javaabu/forms](https://github.com/Javaabu/forms)) and Inertia React ([@javaabu/forms](https://github.com/Javaabu/react-forms)).
 
+```php
+class ArticleBulkActions extends BulkActions
+{
+    protected ?string $model = Article::class;
+
+    protected function actions(): array
+    {
+        return [
+            DeleteAction::make()->can('delete_articles'),
+
+            Action::make('change_status')
+                ->label(__('Change status'))
+                ->canEach('update')
+                ->form([Select::make('status')->options(ArticleStatuses::class)->required()])
+                ->each(fn (Article $article, array $data) => $article->update($data)),
+        ];
+    }
+}
+```
+
+```php
+Route::bulkActions('articles', ArticleBulkActions::class);
+```
+
+```blade
+<x-forms::table model="articles">
+    <x-slot:bulk-form :action="$bulk_actions->getUrl()">
+        <x-bulk-actions::actions :actions="$bulk_actions" :paginator="$articles" />
+    </x-slot:bulk-form>
+    …
+</x-forms::table>
+```
+
+```tsx
+<BulkActionsTable bulkActions={bulkActions}>{rows}</BulkActionsTable>
+```
+
 ## Documentation
 
-You'll find the documentation on [https://docs.javaabu.com/docs/bulk-actions](https://docs.javaabu.com/docs/bulk-actions), and in [`docs/`](docs).
+You'll find the documentation on [https://docs.javaabu.com/docs/bulk-actions](https://docs.javaabu.com/docs/bulk-actions), and in [`docs/`](docs). AI assistants: start with [`llms.txt`](llms.txt); Laravel Boost picks up the guideline and the `javaabu-bulk-actions` skill from the package.
 
 ## Testing
 
 ```bash
 composer test
+pnpm install && pnpm test
 ```
 
 ## Changelog

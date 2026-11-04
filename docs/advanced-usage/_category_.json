@@ -1,0 +1,11 @@
+{
+    "position": 1.32,
+    "label": "Advanced Usage",
+    "collapsible": true,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "slug": "/bulk-actions/_categories/advanced-usage",
+        "description": "Selecting all matching records with javaabu/filters, queued runs, configuration, overriding controllers and views, testing, Dhivehi and the full API."
+    }
+}

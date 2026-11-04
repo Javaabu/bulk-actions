@@ -1,0 +1,5 @@
+{
+    "name": "Bulk Actions",
+    "description": "Fluent bulk actions for Laravel index pages, authorized through the Gate, with stencil forms, chunked and queued execution and Blade or Inertia React UI",
+    "version": "1"
+}
