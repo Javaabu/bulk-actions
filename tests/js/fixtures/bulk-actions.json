@@ -1,0 +1,149 @@
+{
+    "name": "articles",
+    "url": "http://localhost/articles/bulk",
+    "actions": [
+        {
+            "name": "delete",
+            "label": "Delete",
+            "icon": "trash",
+            "color": "danger",
+            "confirmation": {
+                "heading": "Delete",
+                "text": "Are you sure you want to delete the selected records?",
+                "button": "Delete"
+            },
+            "form": null,
+            "meta": null
+        },
+        {
+            "name": "restore",
+            "label": "Restore",
+            "icon": "undo",
+            "color": "success",
+            "confirmation": null,
+            "form": null,
+            "meta": null
+        },
+        {
+            "name": "force_delete",
+            "label": "Delete permanently",
+            "icon": "trash",
+            "color": "danger",
+            "confirmation": {
+                "heading": "Delete permanently",
+                "text": "Are you sure you want to permanently delete the selected records? This can't be undone.",
+                "button": "Delete permanently"
+            },
+            "form": null,
+            "meta": null
+        },
+        {
+            "name": "publish",
+            "label": "ޝާއިޢުކުރޭ",
+            "icon": "check",
+            "color": "primary",
+            "confirmation": {
+                "heading": "ޝާއިޢުކުރޭ",
+                "text": "Are you sure you want to ޝާއިޢުކުރޭ the selected records?",
+                "button": "ޝާއިޢުކުރޭ"
+            },
+            "form": null,
+            "meta": null
+        },
+        {
+            "name": "publish_one_by_one",
+            "label": "Publish One By One",
+            "icon": null,
+            "color": "primary",
+            "confirmation": null,
+            "form": null,
+            "meta": null
+        },
+        {
+            "name": "change_status",
+            "label": "ހާލަތު ބަދަލުކުރޭ",
+            "icon": null,
+            "color": "primary",
+            "confirmation": {
+                "heading": "ހާލަތު ބަދަލުކުރޭ",
+                "text": null,
+                "button": "ހާލަތު ބަދަލުކުރޭ"
+            },
+            "form": {
+                "stencil": 1,
+                "id": "articles-change-status-form",
+                "method": "POST",
+                "operation": "create",
+                "embedded": true,
+                "state": {
+                    "status": null,
+                    "note": null
+                },
+                "live": null,
+                "components": [
+                    {
+                        "type": "select",
+                        "key": "status",
+                        "name": "status",
+                        "component": "Select",
+                        "props": {
+                            "label": "Status",
+                            "required": true,
+                            "options": [
+                                {
+                                    "value": "draft",
+                                    "label": "ޑްރާފްޓް"
+                                },
+                                {
+                                    "value": "published",
+                                    "label": "ޝާއިޢު"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "text",
+                        "key": "note",
+                        "name": "note",
+                        "component": "Text",
+                        "props": {
+                            "label": "Note",
+                            "thaana": true
+                        }
+                    }
+                ]
+            },
+            "meta": null
+        }
+    ],
+    "total": 3,
+    "pageCount": 2,
+    "filters": {
+        "search": "މާލެ"
+    },
+    "result": null,
+    "old": {
+        "action": null,
+        "all": false,
+        "ids": []
+    },
+    "pollInterval": 2000,
+    "strings": {
+        "actions": "Bulk actions",
+        "apply": "Apply",
+        "choose_action": "Choose an action",
+        "selected": ":count selected",
+        "none_selected": "Select records to apply an action",
+        "select_all_matching": "Select all :total",
+        "all_selected": "All :total records are selected.",
+        "all_on_page_selected": "All :count records on this page are selected.",
+        "clear_selection": "Clear selection",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "running": "Running…",
+        "queued": "Running in the background",
+        "progress": ":processed of :total done",
+        "cancel_run": "Stop",
+        "dismiss": "Dismiss"
+    }
+}

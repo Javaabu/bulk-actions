@@ -1,0 +1,365 @@
+<div class="table-responsive relative w-full overflow-x-auto focus-visible:outline-2 focus-visible:outline-ring" data-slot="table-container">
+
+            <form
+    method="POST"
+    
+            data-focus-on-error
+    
+    action="http://localhost/articles/bulk"
+>
+            <input type="hidden" name="_token" value="test-token" autocomplete="off">    
+    
+    
+    <div class="p-4">
+                <div class="bulk-actions flex flex-col gap-3" data-bulk-actions="articles" data-bulk-actions-config="{&quot;name&quot;:&quot;articles&quot;,&quot;total&quot;:3,&quot;pageCount&quot;:2,&quot;pollInterval&quot;:2000,&quot;dialogs&quot;:[&quot;delete&quot;,&quot;force_delete&quot;,&quot;publish&quot;,&quot;change_status&quot;],&quot;strings&quot;:{&quot;actions&quot;:&quot;Bulk actions&quot;,&quot;apply&quot;:&quot;Apply&quot;,&quot;choose_action&quot;:&quot;Choose an action&quot;,&quot;selected&quot;:&quot;:count selected&quot;,&quot;none_selected&quot;:&quot;Select records to apply an action&quot;,&quot;select_all_matching&quot;:&quot;Select all :total&quot;,&quot;all_selected&quot;:&quot;All :total records are selected.&quot;,&quot;all_on_page_selected&quot;:&quot;All :count records on this page are selected.&quot;,&quot;clear_selection&quot;:&quot;Clear selection&quot;,&quot;cancel&quot;:&quot;Cancel&quot;,&quot;confirm&quot;:&quot;Confirm&quot;,&quot;running&quot;:&quot;Running\u2026&quot;,&quot;queued&quot;:&quot;Running in the background&quot;,&quot;progress&quot;:&quot;:processed of :total done&quot;,&quot;cancel_run&quot;:&quot;Stop&quot;,&quot;dismiss&quot;:&quot;Dismiss&quot;}}">
+    
+            <div class="flex flex-wrap items-start gap-2">
+            <div class="w-full md:w-64">
+                <div class="group/native-select relative w-full has-[select:disabled]:opacity-50" data-slot="native-select-wrapper">
+
+    <select
+        class="border-input hover:border-primary-5 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-8 w-full min-w-0 appearance-none rounded-lg border bg-card py-1 pe-8 ps-2.5 text-sm transition-colors select-none focus-visible:ring-2 aria-invalid:ring-3 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 outline-none disabled:pointer-events-none disabled:cursor-not-allowed" required="required" data-bulk-actions-select="data-bulk-actions-select"
+        data-slot="native-select"
+        name="action"
+
+        
+        
+                                    placeholder="Choose an action"
+                    
+                    id="action"
+            >
+                    <option value="" class="bg-[Canvas] text-[CanvasText]"  selected="selected" >Choose an action</option>
+        
+                    <option value="" class="bg-[Canvas] text-[CanvasText]" ></option>
+                    <option value="delete" class="bg-[Canvas] text-[CanvasText]" >Delete</option>
+                    <option value="restore" class="bg-[Canvas] text-[CanvasText]" >Restore</option>
+                    <option value="force_delete" class="bg-[Canvas] text-[CanvasText]" >Delete permanently</option>
+                    <option value="publish" class="bg-[Canvas] text-[CanvasText]" >ޝާއިޢުކުރޭ</option>
+                    <option value="publish_one_by_one" class="bg-[Canvas] text-[CanvasText]" >Publish One By One</option>
+                    <option value="change_status" class="bg-[Canvas] text-[CanvasText]" >ހާލަތު ބަދަލުކުރޭ</option>
+            </select>
+                    <svg class="forms-icon text-muted-foreground top-1/2 end-2.5 size-4 -translate-y-1/2 pointer-events-none absolute select-none" aria-hidden="true" focusable="false" data-slot="native-select-icon" data-icon-name="chevron-down" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+
+
+            </div>
+            <div>
+                <button
+    class="focus-visible:border-ring aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 active:bg-primary-active h-8 gap-2 px-3.75 bg-warning text-warning-foreground hover:bg-warning/85 focus-visible:ring-warning/40 aria-expanded:bg-warning/85" data-bulk-actions-apply="data-bulk-actions-apply"
+    data-slot="button"
+    data-variant="warning"
+    data-size="default"
+            type="submit"
+        >
+            Apply
+    </button>
+            </div>
+            <p class="self-center text-sm text-muted-foreground" data-bulk-actions-count aria-live="polite">Select records to apply an action</p>
+        </div>
+
+        
+                    <div class="flex flex-wrap items-center gap-2 rounded-md bg-muted px-3 py-2 text-sm" data-bulk-actions-all-matching  hidden >
+                <span data-bulk-actions-page-selected >All 2 records on this page are selected.</span>
+                <span data-bulk-actions-all-selected  hidden >All 3 records are selected.</span>
+                <button type="button" class="font-medium underline underline-offset-4" data-bulk-actions-select-all >
+                    Select all 3
+                </button>
+                <button type="button" class="font-medium underline underline-offset-4" data-bulk-actions-clear  hidden >
+                    Clear selection
+                </button>
+            </div>
+        
+        <input type="hidden" name="all" value="0" data-bulk-actions-all>
+        <fieldset class="contents" data-bulk-actions-filters  disabled >
+                            <input type="hidden" name="filters[search]" value="މާލެ">
+                    </fieldset>
+
+                                            <dialog
+    class="forms-dialog group/modal text-sm fixed z-50 flex flex-col overflow-hidden bg-popover text-popover-foreground shadow-popup ring-1 ring-border duration-150 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 sm:max-w-lg inset-x-0 bottom-0 max-h-[calc(100dvh-3rem)] rounded-t-xl data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10 sm:inset-auto sm:top-1/2 sm:start-1/2 sm:-translate-x-1/2 sm:rtl:translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-2rem)] sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:rounded-xl sm:data-open:zoom-in-95 sm:data-closed:zoom-out-95 sm:data-open:slide-in-from-bottom-0 sm:data-closed:slide-out-to-bottom-0" data-bulk-actions-dialog="delete"
+    id="articles-delete-dialog"
+    data-slot="dialog-content"
+        aria-labelledby="articles-delete-dialog-title"
+    >
+            <div class="gap-1.5 px-4 pt-4 pb-2 group-data-[mobile=fullscreen]/modal:max-sm:pt-[max(1rem,env(safe-area-inset-top))] flex shrink-0 flex-col pe-12" data-slot="modal-header">
+            <h2 class="text-base leading-snug font-semibold" id="articles-delete-dialog-title" data-slot="modal-title">
+                Delete
+            </h2>
+                    </div>
+    
+    <button type="button" class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 hover:bg-secondary hover:text-foreground active:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-secondary aria-expanded:text-foreground size-7 rounded-md in-data-[slot=button-group]:rounded-md top-3 end-3 absolute absolute top-3 end-3" data-slot="button" data-variant="ghost" data-size="icon-sm" data-dismiss="modal" aria-label="Close">
+        <svg class="forms-icon" aria-hidden="true" focusable="false" data-icon-name="x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <div class="px-4 py-2 min-h-0 last:pb-4 flex-1 overflow-y-auto overscroll-contain" data-slot="modal-body">
+        <fieldset class="flex flex-col gap-4" data-bulk-actions-fields  disabled >
+                                            <p>Are you sure you want to delete the selected records?</p>
+                    
+                                    </fieldset>
+    </div>
+
+            <div class="gap-2 px-4 py-3 mt-2 sm:flex-row sm:justify-end flex shrink-0 flex-col-reverse border-t bg-muted/50 group-data-[mobile=sheet]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))] group-data-[mobile=fullscreen]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]" data-slot="modal-footer">
+            <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] h-8 gap-2 px-3.75" data-dismiss="modal"
+    data-slot="button"
+    data-variant="secondary"
+    data-size="default"
+            type="button"
+        >
+            Cancel
+    </button>
+                    <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-[color-mix(in_oklab,var(--destructive),black_12%)] focus-visible:ring-destructive/30 focus-visible:border-destructive aria-expanded:bg-destructive/90 h-8 gap-2 px-3.75" data-bulk-actions-confirm="data-bulk-actions-confirm"
+    data-slot="button"
+    data-variant="destructive"
+    data-size="default"
+            type="submit"
+        >
+            Delete
+    </button>
+        </div>
+    </dialog>
+                                            <dialog
+    class="forms-dialog group/modal text-sm fixed z-50 flex flex-col overflow-hidden bg-popover text-popover-foreground shadow-popup ring-1 ring-border duration-150 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 sm:max-w-lg inset-x-0 bottom-0 max-h-[calc(100dvh-3rem)] rounded-t-xl data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10 sm:inset-auto sm:top-1/2 sm:start-1/2 sm:-translate-x-1/2 sm:rtl:translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-2rem)] sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:rounded-xl sm:data-open:zoom-in-95 sm:data-closed:zoom-out-95 sm:data-open:slide-in-from-bottom-0 sm:data-closed:slide-out-to-bottom-0" data-bulk-actions-dialog="force_delete"
+    id="articles-force-delete-dialog"
+    data-slot="dialog-content"
+        aria-labelledby="articles-force-delete-dialog-title"
+    >
+            <div class="gap-1.5 px-4 pt-4 pb-2 group-data-[mobile=fullscreen]/modal:max-sm:pt-[max(1rem,env(safe-area-inset-top))] flex shrink-0 flex-col pe-12" data-slot="modal-header">
+            <h2 class="text-base leading-snug font-semibold" id="articles-force-delete-dialog-title" data-slot="modal-title">
+                Delete permanently
+            </h2>
+                    </div>
+    
+    <button type="button" class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 hover:bg-secondary hover:text-foreground active:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-secondary aria-expanded:text-foreground size-7 rounded-md in-data-[slot=button-group]:rounded-md top-3 end-3 absolute absolute top-3 end-3" data-slot="button" data-variant="ghost" data-size="icon-sm" data-dismiss="modal" aria-label="Close">
+        <svg class="forms-icon" aria-hidden="true" focusable="false" data-icon-name="x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <div class="px-4 py-2 min-h-0 last:pb-4 flex-1 overflow-y-auto overscroll-contain" data-slot="modal-body">
+        <fieldset class="flex flex-col gap-4" data-bulk-actions-fields  disabled >
+                                            <p>Are you sure you want to permanently delete the selected records? This can&#039;t be undone.</p>
+                    
+                                    </fieldset>
+    </div>
+
+            <div class="gap-2 px-4 py-3 mt-2 sm:flex-row sm:justify-end flex shrink-0 flex-col-reverse border-t bg-muted/50 group-data-[mobile=sheet]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))] group-data-[mobile=fullscreen]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]" data-slot="modal-footer">
+            <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] h-8 gap-2 px-3.75" data-dismiss="modal"
+    data-slot="button"
+    data-variant="secondary"
+    data-size="default"
+            type="button"
+        >
+            Cancel
+    </button>
+                    <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-[color-mix(in_oklab,var(--destructive),black_12%)] focus-visible:ring-destructive/30 focus-visible:border-destructive aria-expanded:bg-destructive/90 h-8 gap-2 px-3.75" data-bulk-actions-confirm="data-bulk-actions-confirm"
+    data-slot="button"
+    data-variant="destructive"
+    data-size="default"
+            type="submit"
+        >
+            Delete permanently
+    </button>
+        </div>
+    </dialog>
+                                            <dialog
+    class="forms-dialog group/modal text-sm fixed z-50 flex flex-col overflow-hidden bg-popover text-popover-foreground shadow-popup ring-1 ring-border duration-150 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 sm:max-w-lg inset-x-0 bottom-0 max-h-[calc(100dvh-3rem)] rounded-t-xl data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10 sm:inset-auto sm:top-1/2 sm:start-1/2 sm:-translate-x-1/2 sm:rtl:translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-2rem)] sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:rounded-xl sm:data-open:zoom-in-95 sm:data-closed:zoom-out-95 sm:data-open:slide-in-from-bottom-0 sm:data-closed:slide-out-to-bottom-0" data-bulk-actions-dialog="publish"
+    id="articles-publish-dialog"
+    data-slot="dialog-content"
+        aria-labelledby="articles-publish-dialog-title"
+    >
+            <div class="gap-1.5 px-4 pt-4 pb-2 group-data-[mobile=fullscreen]/modal:max-sm:pt-[max(1rem,env(safe-area-inset-top))] flex shrink-0 flex-col pe-12" data-slot="modal-header">
+            <h2 class="text-base leading-snug font-semibold" id="articles-publish-dialog-title" data-slot="modal-title">
+                ޝާއިޢުކުރޭ
+            </h2>
+                    </div>
+    
+    <button type="button" class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 hover:bg-secondary hover:text-foreground active:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-secondary aria-expanded:text-foreground size-7 rounded-md in-data-[slot=button-group]:rounded-md top-3 end-3 absolute absolute top-3 end-3" data-slot="button" data-variant="ghost" data-size="icon-sm" data-dismiss="modal" aria-label="Close">
+        <svg class="forms-icon" aria-hidden="true" focusable="false" data-icon-name="x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <div class="px-4 py-2 min-h-0 last:pb-4 flex-1 overflow-y-auto overscroll-contain" data-slot="modal-body">
+        <fieldset class="flex flex-col gap-4" data-bulk-actions-fields  disabled >
+                                            <p>Are you sure you want to ޝާއިޢުކުރޭ the selected records?</p>
+                    
+                                    </fieldset>
+    </div>
+
+            <div class="gap-2 px-4 py-3 mt-2 sm:flex-row sm:justify-end flex shrink-0 flex-col-reverse border-t bg-muted/50 group-data-[mobile=sheet]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))] group-data-[mobile=fullscreen]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]" data-slot="modal-footer">
+            <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] h-8 gap-2 px-3.75" data-dismiss="modal"
+    data-slot="button"
+    data-variant="secondary"
+    data-size="default"
+            type="button"
+        >
+            Cancel
+    </button>
+                    <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75" data-bulk-actions-confirm="data-bulk-actions-confirm"
+    data-slot="button"
+    data-variant="default"
+    data-size="default"
+            type="submit"
+        >
+            ޝާއިޢުކުރޭ
+    </button>
+        </div>
+    </dialog>
+                                            <dialog
+    class="forms-dialog group/modal text-sm fixed z-50 flex flex-col overflow-hidden bg-popover text-popover-foreground shadow-popup ring-1 ring-border duration-150 outline-none data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 sm:max-w-lg inset-x-0 bottom-0 max-h-[calc(100dvh-3rem)] rounded-t-xl data-open:slide-in-from-bottom-10 data-closed:slide-out-to-bottom-10 sm:inset-auto sm:top-1/2 sm:start-1/2 sm:-translate-x-1/2 sm:rtl:translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-2rem)] sm:h-auto sm:max-h-[calc(100dvh-2rem)] sm:rounded-xl sm:data-open:zoom-in-95 sm:data-closed:zoom-out-95 sm:data-open:slide-in-from-bottom-0 sm:data-closed:slide-out-to-bottom-0" data-bulk-actions-dialog="change_status"
+    id="articles-change-status-dialog"
+    data-slot="dialog-content"
+        aria-labelledby="articles-change-status-dialog-title"
+    >
+            <div class="gap-1.5 px-4 pt-4 pb-2 group-data-[mobile=fullscreen]/modal:max-sm:pt-[max(1rem,env(safe-area-inset-top))] flex shrink-0 flex-col pe-12" data-slot="modal-header">
+            <h2 class="text-base leading-snug font-semibold" id="articles-change-status-dialog-title" data-slot="modal-title">
+                ހާލަތު ބަދަލުކުރޭ
+            </h2>
+                    </div>
+    
+    <button type="button" class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 hover:bg-secondary hover:text-foreground active:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-secondary aria-expanded:text-foreground size-7 rounded-md in-data-[slot=button-group]:rounded-md top-3 end-3 absolute absolute top-3 end-3" data-slot="button" data-variant="ghost" data-size="icon-sm" data-dismiss="modal" aria-label="Close">
+        <svg class="forms-icon" aria-hidden="true" focusable="false" data-icon-name="x" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <div class="px-4 py-2 min-h-0 last:pb-4 flex-1 overflow-y-auto overscroll-contain" data-slot="modal-body">
+        <fieldset class="flex flex-col gap-4" data-bulk-actions-fields  disabled >
+                    
+                                            <div class="stencil-item" data-stencil-key="status" data-stencil-hash="ecb62ccf5c06"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="status" data-slot="label">
+                    Status
+            <span class="required text-destructive" data-slot="required-marker" aria-hidden="true">*</span>
+            </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <div class="group/native-select relative w-full has-[select:disabled]:opacity-50" data-slot="native-select-wrapper">
+
+    <select
+        class="border-input hover:border-primary-5 placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 h-8 w-full min-w-0 appearance-none rounded-lg border bg-card py-1 pe-8 ps-2.5 text-sm transition-colors select-none focus-visible:ring-2 aria-invalid:ring-3 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] data-[size=sm]:py-0.5 outline-none disabled:pointer-events-none disabled:cursor-not-allowed" required="required"
+        data-slot="native-select"
+        name="status"
+
+        
+        
+        
+                    id="status"
+            >
+        
+                    <option value="draft" class="bg-[Canvas] text-[CanvasText]" >ޑްރާފްޓް</option>
+                    <option value="published" class="bg-[Canvas] text-[CanvasText]" >ޝާއިޢު</option>
+            </select>
+                    <svg class="forms-icon text-muted-foreground top-1/2 end-2.5 size-4 -translate-y-1/2 pointer-events-none absolute select-none" aria-hidden="true" focusable="false" data-slot="native-select-icon" data-icon-name="chevron-down" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</div><div class="stencil-item" data-stencil-key="note" data-stencil-hash="98753ec18608"><div class="min-w-0 @container/form-field w-full mb-4" data-slot="form-field" data-label-layout="stacked">
+    <div class="gap-2 grid">
+                    <div class="gap-2 flex items-center justify-between ">
+                <label class="gap-2 text-sm leading-snug font-normal group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed" for="note" data-slot="label">
+                    Note
+                        </label>
+            </div>
+                <div class="min-w-0 gap-1.5 grid ">
+            <input
+                    class="border-input hover:border-primary-5 focus-visible:border-primary focus-visible:ring-primary/20 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 disabled:bg-input/50 dark:disabled:bg-input/80 h-8 rounded-lg border bg-card px-2.5 py-1 text-base transition-colors file:h-6 file:text-sm file:font-medium focus-visible:ring-2 aria-invalid:ring-3 md:text-sm w-full min-w-0 outline-none file:inline-flex file:border-0 file:bg-transparent file:text-foreground placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50" dir="rtl" lang="dv" data-thaana=""
+                                        data-slot="input"
+                    type="text"
+                    value=""
+                    name="note"
+                                            id="note"
+                                                        />
+        </div>
+    </div>
+</div>
+
+</div>
+    
+                                    </fieldset>
+    </div>
+
+            <div class="gap-2 px-4 py-3 mt-2 sm:flex-row sm:justify-end flex shrink-0 flex-col-reverse border-t bg-muted/50 group-data-[mobile=sheet]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))] group-data-[mobile=fullscreen]/modal:max-sm:pb-[max(0.75rem,env(safe-area-inset-bottom))]" data-slot="modal-footer">
+            <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] aria-expanded:bg-[color-mix(in_oklab,var(--secondary),var(--foreground)_6%)] h-8 gap-2 px-3.75" data-dismiss="modal"
+    data-slot="button"
+    data-variant="secondary"
+    data-size="default"
+            type="button"
+        >
+            Cancel
+    </button>
+                    <button
+    class="focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 rounded-lg border border-transparent bg-clip-padding text-sm font-normal focus-visible:ring-3 aria-invalid:ring-3 [&amp;_svg:not([class*=&#039;size-&#039;])]:size-4 group/button inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-[color,background-color,border-color,box-shadow] duration-200 outline-none select-none disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary-hover active:bg-primary-active aria-expanded:bg-primary-hover h-8 gap-2 px-3.75" data-bulk-actions-confirm="data-bulk-actions-confirm"
+    data-slot="button"
+    data-variant="default"
+    data-size="default"
+            type="submit"
+        >
+            ހާލަތު ބަދަލުކުރޭ
+    </button>
+        </div>
+    </dialog>
+            
+    <input type="hidden" name="redirect" value="http://localhost">
+</div>
+            </div>
+
+            <div class="mt-0">
+                    <div class="p-4 lg:hidden bg-muted">
+                <div class="gap-2.5 flex items-start">
+                    <input id="articles-select-all-resp" data-all="articles" value="1" class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox" type="checkbox" />
+                    <label for="articles-select-all-resp" class="gap-2 text-sm group-data-[disabled=true]:opacity-50 peer-disabled:opacity-50 flex items-center select-none group-data-[disabled=true]:pointer-events-none peer-disabled:cursor-not-allowed leading-5 font-normal font-semibold">Select All</label>
+                </div>
+            </div>
+                <table class="table w-full caption-bottom text-sm " data-slot="table" data-form-sortable="#filter">
+            <thead class="[&amp;_tr]:border-b" data-slot="table-header">
+                
+                <tr class="hover:bg-muted data-[state=selected]:bg-primary-1 data-[state=selected]:hover:bg-primary-2 border-b border-border transition-colors has-aria-expanded:bg-muted" data-slot="table-row">
+                                            <th class="td-checkbox text-foreground bg-muted relative h-auto px-4 py-3 text-start align-middle font-semibold whitespace-nowrap [&amp;:has([role=checkbox])]:pe-0 not-last:before:absolute not-last:before:end-0 not-last:before:top-1/2 not-last:before:h-[1.6em] not-last:before:w-px not-last:before:-translate-y-1/2 not-last:before:bg-border w-px" data-slot="table-head">
+                            <input id="articles-select-all" data-all="articles" value="1" class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox" type="checkbox" aria-label="Select All" />
+                        </th>
+                                        
+                </tr>
+                
+            </thead>
+
+                        <tbody class="[&amp;_tr:last-child]:border-0" data-slot="table-body">
+            
+                <tr id="articles-1-row" class="hover:bg-muted data-[state=selected]:bg-primary-1 data-[state=selected]:hover:bg-primary-2 border-b border-border transition-colors has-aria-expanded:bg-muted" data-slot="table-row">
+            <td class="td-checkbox px-4 py-3 align-middle whitespace-nowrap [&amp;:has([role=checkbox])]:pe-0 w-px" data-slot="table-cell">
+            <input id="articles-1-row-check" data-check="articles" name="articles[]" value="1" class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox" type="checkbox" aria-label="Select 1"  />
+        </td>
+    
+    <td class="px-4 py-3 align-middle whitespace-nowrap [&amp;:has([role=checkbox])]:pe-0" data-slot="table-cell"
+        data-col="Title"
+    >
+                        ލިޔުން 1
+            </td>
+</tr>
+
+                    <tr id="articles-2-row" class="hover:bg-muted data-[state=selected]:bg-primary-1 data-[state=selected]:hover:bg-primary-2 border-b border-border transition-colors has-aria-expanded:bg-muted" data-slot="table-row">
+            <td class="td-checkbox px-4 py-3 align-middle whitespace-nowrap [&amp;:has([role=checkbox])]:pe-0 w-px" data-slot="table-cell">
+            <input id="articles-2-row-check" data-check="articles" name="articles[]" value="2" class="appearance-none border-input bg-card hover:border-primary checked:bg-primary checked:text-primary-foreground dark:checked:bg-primary checked:border-primary aria-invalid:checked:border-primary aria-invalid:border-destructive dark:aria-invalid:border-destructive/50 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 flex size-4 items-center justify-center rounded-[4px] border transition-colors group-has-disabled/field:opacity-50 focus-visible:ring-3 aria-invalid:ring-3 group-has-[:focus-visible]/field-label:ring-0 group-has-[:focus-visible]/field-label:not-checked:border-input group-has-[:focus-visible]/field-label:checked:border-primary peer relative shrink-0 outline-none after:absolute after:-inset-x-3 after:-inset-y-2 disabled:cursor-not-allowed disabled:opacity-50 forms-checkbox" type="checkbox" aria-label="Select 2"  />
+        </td>
+    
+    <td class="px-4 py-3 align-middle whitespace-nowrap [&amp;:has([role=checkbox])]:pe-0" data-slot="table-cell"
+        data-col="Title"
+    >
+                        ލިޔުން 2
+            </td>
+</tr>
+
+            </tbody>
+            
+        </table>
+    </div>
+</form>
+
+    </div>
+
+    

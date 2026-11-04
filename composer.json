@@ -40,6 +40,7 @@
   },
   "require-dev": {
     "javaabu/boost-javaabu-guidelines": "^1.4",
+    "javaabu/filters": "^1.0@dev",
     "laravel/pint": "^1.24",
     "orchestra/testbench": "^10.0 || ^11.0",
     "phpunit/phpunit": "^11.5.3 || ^12.5.8"
@@ -74,6 +75,10 @@
     }
   },
   "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/filters"
+    },
     {
       "type": "vcs",
       "url": "https://github.com/Javaabu/forms"
