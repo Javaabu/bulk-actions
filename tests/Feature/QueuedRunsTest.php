@@ -126,8 +126,7 @@ class QueuedRunsTest extends TestCase
         $run = BulkActionRun::query()->sole();
 
         $this->assertEquals('dv', $run->locale);
-        $this->assertEquals(__('bulk-actions::strings.actions.delete.done', [], 'dv') !== '', true);
-        $this->assertStringContainsString('3', $run->message);
+        $this->assertEquals('3 ރެކޯޑު ފޮހެލެވިއްޖެ.', $run->message);
     }
 
     #[Test]
