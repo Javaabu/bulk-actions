@@ -1,0 +1,99 @@
+{
+  "name": "javaabu/bulk-actions",
+  "description": "Fluent bulk actions for Laravel: each authorized through the Gate with can(), optionally asking for input with a stencil form, run on selected records or everything matching the current filters, chunked and queued for large selections, with the selection and action UI in Blade (javaabu/forms) or Inertia React (@javaabu/forms).",
+  "homepage": "https://github.com/Javaabu/bulk-actions",
+  "license": "MIT",
+  "keywords": [
+    "javaabu",
+    "laravel",
+    "bulk-actions",
+    "bulk",
+    "tables",
+    "blade",
+    "inertia",
+    "react",
+    "dhivehi"
+  ],
+  "authors": [
+    {
+      "name": "Javaabu Pvt. Ltd.",
+      "email": "info@javaabu.com",
+      "homepage": "https://javaabu.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.4",
+    "illuminate/bus": "^12.0 || ^13.0",
+    "illuminate/contracts": "^12.0 || ^13.0",
+    "illuminate/database": "^12.0 || ^13.0",
+    "illuminate/http": "^12.0 || ^13.0",
+    "illuminate/queue": "^12.0 || ^13.0",
+    "illuminate/routing": "^12.0 || ^13.0",
+    "illuminate/support": "^12.0 || ^13.0",
+    "illuminate/validation": "^12.0 || ^13.0",
+    "illuminate/view": "^12.0 || ^13.0",
+    "javaabu/forms": "^2.0@dev",
+    "javaabu/manifest": "^1.0@dev",
+    "javaabu/permissions": "^3.0@dev",
+    "javaabu/stencil": "^1.0@dev"
+  },
+  "require-dev": {
+    "javaabu/boost-javaabu-guidelines": "^1.4",
+    "laravel/pint": "^1.24",
+    "orchestra/testbench": "^10.0 || ^11.0",
+    "phpunit/phpunit": "^11.5.3 || ^12.5.8"
+  },
+  "suggest": {
+    "javaabu/filters": "Select all records matching the current filters (^1.0)"
+  },
+  "autoload": {
+    "psr-4": {
+      "Javaabu\\BulkActions\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Javaabu\\BulkActions\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit",
+    "test-coverage": "vendor/bin/phpunit --coverage-clover=clover.xml",
+    "lint": "vendor/bin/pint --test",
+    "format": "vendor/bin/pint"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.x-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Javaabu\\BulkActions\\BulkActionsServiceProvider"
+      ]
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/forms"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/manifest"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/permissions"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Javaabu/stencil"
+    }
+  ],
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
