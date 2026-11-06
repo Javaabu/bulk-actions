@@ -32,12 +32,15 @@ class BulkActionsServiceProvider extends ServiceProvider
             ->js('js')
             ->dist('../dist')
             ->script('bulk-actions', 'js/blade/bulk-actions.ts', depends_on: ['forms::forms'])
+            // The Blade script imports no npm packages: only the React components
+            // (imported through @javaabu/bulk-actions) need these, so Blade apps
+            // aren't asked to install them.
             ->npm([
                 '@javaabu/forms' => 'github:Javaabu/react-forms#next-gen',
-            ], [
+            ], peer_dependencies: [
                 'react' => '^19.0',
                 'react-dom' => '^19.0',
-            ]));
+            ], for: 'pages'));
 
         $this->registerRouteMacros();
         $this->registerPermissions();

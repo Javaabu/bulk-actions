@@ -109,6 +109,8 @@ return view('admin.articles.index', [
 
 ## 3b. Inertia React
 
+The React components need `@javaabu/forms`, `react` and `react-dom` in the app (`php artisan manifest:check` lists them for Inertia apps; Blade-only apps aren't asked for them).
+
 ```php
 return Inertia::render('Articles/Index', [
     'articles' => $articles,

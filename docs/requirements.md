@@ -13,7 +13,7 @@ This package requires:
 - [javaabu/manifest](https://github.com/Javaabu/manifest), which ships the Blade script and the React components to your app (installed with bulk-actions)
 - A queue worker, for [queued runs](./advanced-usage/queued-runs.md). With the `sync` driver, large selections run during the request.
 
-For Inertia React pages:
+For Inertia React pages (Blade-only apps need none of this):
 
 - React 19
 - [@javaabu/forms](https://github.com/Javaabu/react-forms) and its peer dependencies (`php artisan manifest:check` lists what's missing)

@@ -52,7 +52,7 @@ See [Running actions](./basic-usage/running-actions.md#routes) for every option.
 
 # Blade
 
-The Blade view is built on javaabu/forms v2's table, and its script is added to the page through javaabu/manifest when the view renders. If your app already uses javaabu/forms, there's nothing more to do.
+The Blade view is built on javaabu/forms v2's table, and its script is added to the page through javaabu/manifest when the view renders. If your app already uses javaabu/forms, there's nothing more to do. The script imports no npm packages, so a Blade-only app doesn't need React or @javaabu/forms: `php artisan manifest:check` only asks Inertia apps for them.
 
 # Inertia React
 
@@ -72,7 +72,7 @@ export default defineConfig({
 
 ```bash
 npm install github:Javaabu/react-forms#next-gen react react-dom
-php artisan manifest:check     # lists anything missing
+php artisan manifest:check     # lists anything missing; the React packages are checked once @inertiajs/* is installed (or with --scope=pages)
 php artisan manifest:types     # TypeScript paths for @javaabu/bulk-actions and @javaabu/stencil
 ```
 
