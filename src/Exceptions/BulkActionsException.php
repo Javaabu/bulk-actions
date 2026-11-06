@@ -35,4 +35,9 @@ class BulkActionsException extends LogicException
     {
         return new self("Bulk action [{$action}] needs to run on the queue, but its BulkActions is inline. Queued runs rebuild the actions in the job, so define them in a class that extends BulkActions, or use ->queue(false).");
     }
+
+    public static function contextNotSerializable(string $class, string $key, string $type): self
+    {
+        return new self("The context of [{$class}] can only hold scalars, nulls and arrays, but [{$key}] is a [{$type}]. Store its key instead (e.g. \$model->getKey()) and look it up in fromContext().");
+    }
 }

@@ -65,6 +65,9 @@ class BulkActions implements Arrayable, Htmlable, JsonSerializable, Stringable
 
     protected ?int $page_count = null;
 
+    /** @var array<string, mixed> */
+    protected array $context = [];
+
     /** @var array<string, mixed>|null */
     protected ?array $filter_parameters = null;
 
@@ -120,6 +123,76 @@ class BulkActions implements Arrayable, Htmlable, JsonSerializable, Stringable
     public function isInline(): bool
     {
         return static::class === self::class;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Context
+    |--------------------------------------------------------------------------
+    */
+
+    /**
+     * Data a class configured at runtime needs to be rebuilt in a queued run
+     * (`['post_type' => 'news']`). Scalars, nulls and arrays of them only: it's
+     * stored on the BulkActionRun as JSON.
+     *
+     * @param  array<string, mixed>  $context
+     */
+    public function withContext(array $context): static
+    {
+        static::assertSerializableContext($context);
+
+        $this->context = [...$this->context, ...$context];
+
+        return $this;
+    }
+
+    /**
+     * What a queued run stores to rebuild this set with fromContext(). Default:
+     * what was given to withContext(). Override it to derive the context from
+     * the set's own state.
+     *
+     * @return array<string, mixed>
+     */
+    public function context(): array
+    {
+        return $this->context;
+    }
+
+    /**
+     * Rebuild the set from a queued run's context. Default: make() with the
+     * context. Override it when the context configures the set, e.g.
+     * `return static::for(PostType::find($context['post_type']));`.
+     *
+     * @param  array<string, mixed>  $context
+     */
+    public static function fromContext(array $context): static
+    {
+        return static::make()->withContext($context);
+    }
+
+    /**
+     * Throws when the context holds anything but scalars, nulls and arrays.
+     *
+     * @param  array<array-key, mixed>  $context
+     */
+    public static function assertSerializableContext(array $context, string $path = ''): void
+    {
+        foreach ($context as $key => $value) {
+            $name = ltrim("{$path}.{$key}", '.');
+
+            if (is_array($value)) {
+                static::assertSerializableContext($value, $name);
+
+                continue;
+            }
+
+            if ($value === null || is_scalar($value)) {
+                continue;
+            }
+
+            throw BulkActionsException::contextNotSerializable(static::class, $name, get_debug_type($value));
+        }
     }
 
     /*

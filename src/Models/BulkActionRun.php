@@ -27,6 +27,7 @@ use Throwable;
  * @property string $action
  * @property array<string, mixed> $selection
  * @property array<string, mixed>|null $data
+ * @property array<string, mixed>|null $context
  * @property RunStatuses $status
  * @property int $total
  * @property int $succeeded
@@ -58,6 +59,7 @@ class BulkActionRun extends Model
         return [
             'selection' => 'array',
             'data' => 'array',
+            'context' => 'array',
             'status' => RunStatuses::class,
             'total' => 'integer',
             'succeeded' => 'integer',

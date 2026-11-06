@@ -13,13 +13,53 @@ Route::bulkActionRuns();
 
 # The job
 
-`RunBulkAction` rebuilds the bulk actions class (`ArticleBulkActions::make()`) for the user who started the run, so:
+`RunBulkAction` rebuilds the bulk actions class (`ArticleBulkActions::fromContext($run->context)`, which is `make()` by default; see [context](#sets-configured-at-runtime-context)) for the user who started the run, so:
 
 - the bulk actions must be a class (inline ones can't be queued);
 - actions are authorized for that user (`canEach()` per record);
 - it runs in the locale the run was started in, so messages are in the user's language.
 
 It counts the records again, then handles them a chunk at a time, saving the counts after each chunk. It has one try and a timeout of `bulk-actions.queue.timeout` (3600 seconds). Set the connection and queue with `bulk-actions.queue.connection` and `.queue`.
+
+# Sets configured at runtime: context
+
+The job only knows the run: it rebuilds the set with `fromContext()`, from the context stored on the run. A class configured at runtime (one class for every post type, say) keeps what it needs in its context and rebuilds itself from it:
+
+```php
+class PostBulkActions extends BulkActions
+{
+    protected ?PostType $post_type = null;
+
+    public static function for(PostType $post_type): static
+    {
+        $bulk_actions = static::make();
+        $bulk_actions->post_type = $post_type;
+
+        return $bulk_actions->model(Post::class);
+    }
+
+    // stored on the BulkActionRun (a JSON column)
+    public function context(): array
+    {
+        return ['post_type' => $this->post_type?->getKey()];
+    }
+
+    // used by RunBulkAction to rebuild the set
+    public static function fromContext(array $context): static
+    {
+        return static::for(PostType::query()->findOrFail($context['post_type']));
+    }
+
+    public function newQuery(): Builder
+    {
+        return Post::query()->whereBelongsTo($this->post_type);
+    }
+}
+```
+
+- `context()` is what's stored. By default it's what you passed to `withContext([...])`, and `fromContext()` calls `make()->withContext($context)`, so a set that only reads `$this->context()` needs no overrides: `ArticleBulkActions::make()->withContext(['organization' => $organization->id])`.
+- The context holds scalars, nulls and arrays only. Store a model's key, not the model, and look it up in `fromContext()`. Anything else throws a `BulkActionsException` when it's set or when the run is queued.
+- Use the same context on the page and in the controller that runs the actions, so the request and the job see the same set.
 
 # BulkActionRun
 
@@ -30,6 +70,7 @@ It counts the records again, then handles them a chunk at a time, saving the cou
 | `bulk_actions`, `name`, `action` | The class, the selection's name and the action |
 | `selection` | `ids`, `all` and `filters` |
 | `data` | The action form's values |
+| `context` | The set's `context()`, for `fromContext()` |
 | `status` | `RunStatuses`: `pending`, `processing`, `completed`, `failed`, `cancelled` |
 | `total`, `succeeded`, `skipped`, `failed` | Counts |
 | `message`, `error` | The result message, and the exception message of a failed job |

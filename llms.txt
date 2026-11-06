@@ -14,7 +14,7 @@ Paths are relative to this file. In a project, that's vendor/javaabu/bulk-action
 - Register routes yourself: `Route::bulkActions('articles', ArticleBulkActions::class)` (POST articles/bulk) and `Route::bulkActionRuns()` inside the app's route group; pass `guard` for other guards.
 - Blade: put `<x-bulk-actions::actions :actions="$bulk_actions" :paginator="$articles" />` in the `bulk-form` slot of `<x-forms::table model="articles">`, with `:action="$bulk_actions->getUrl()"`. React: pass `ArticleBulkActions::make()->paginator($articles)` as a prop and render `<BulkActionsTable bulkActions={bulkActions}>`.
 - For "select all matching", give the class the listing's filters: `$this->filters(ArticleFilters::class)` (javaabu/filters) or a closure `fn (Builder $query, array $filters) => …`, and pass the paginator so the UI knows the total.
-- Selections above `bulk-actions.queue_after` (500) are queued: run a queue worker, schedule `model:prune` for `BulkActionRun`, run `php artisan permissions:sync`. Use `->queue(false)` for actions that can't be queued (file uploads).
+- Selections above `bulk-actions.queue_after` (500) are queued: run a queue worker, schedule `model:prune` for `BulkActionRun`, run `php artisan permissions:sync`. Use `->queue(false)` for actions that can't be queued (file uploads). A class configured at runtime keeps what the job needs in `context()` (scalars only) and rebuilds itself in `static fromContext()`.
 - Labels, confirmation questions and success messages go through `__()`; add Dhivehi to `lang/dv.json`. Use Thaana in tests of user-facing behaviour.
 - Test through the route: `postJson(route('articles.bulk'), ['action' => 'publish', 'articles' => [...]])` and assert on `succeeded`, `skipped`, `failed`.
 

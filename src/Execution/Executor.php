@@ -95,6 +95,7 @@ class Executor
             'action' => $action->getName(),
             'selection' => $selection->toArray(),
             'data' => $data ?: null,
+            'context' => $this->context($bulk_actions),
             'total' => $total,
             'locale' => app()->getLocale(),
             'message' => trans_choice('bulk-actions::strings.queued', $total, ['count' => $total, 'action' => $action->getLabel()]),
@@ -116,6 +117,24 @@ class Executor
         dispatch($job->onConnection($connection)->onQueue($queue));
 
         return $run->fresh()->toResult();
+    }
+
+    /**
+     * The set's context for the run, checked so the job can rebuild it.
+     *
+     * @return array<string, mixed>|null
+     */
+    protected function context(BulkActions $bulk_actions): ?array
+    {
+        $context = $bulk_actions->context();
+
+        if ($context === []) {
+            return null;
+        }
+
+        $bulk_actions::assertSerializableContext($context);
+
+        return $context;
     }
 
     /**

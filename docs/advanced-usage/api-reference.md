@@ -28,6 +28,9 @@ sidebar_position: 7
 | `getActions()` / `getAction(?string $name)` / `hasAction(string $name)` | Every action |
 | `getAvailableActions()` / `hasAvailableActions()` | Visible actions whose `can()` passes |
 | `isInline()` | Not a subclass; can't be queued |
+| `withContext(array $context)` / `context(): array` | Context stored on a queued run; override `context()` to derive it |
+| `static fromContext(array $context): static` | Rebuilds the set in the job; default `make()->withContext($context)` |
+| `static assertSerializableContext(array $context)` | Throws unless the context is scalars, nulls and arrays |
 | `execute(?Request $request): ActionResult` | Validate and run (or queue) |
 | `respond(?Request $request): Response` | Execute, then JSON or a redirect with the result flashed |
 | `getResult(): ?ActionResult` / `sessionKey()` | The flashed result |
@@ -78,7 +81,7 @@ Closures get `$action`, `$bulkActions`, `$model`, `$user` by name, and `$records
 - `Policies\BulkActionRunPolicy`, `Http\Controllers\BulkActionsController`, `Http\Controllers\BulkActionRunsController`, `Routing\BulkActionRoutes`.
 - `Support\FiltersAdapter` (javaabu/filters without a hard dependency), `Support\QueryFields` (nested parameters as hidden fields).
 - `Views\Components\Actions`: `<x-bulk-actions::actions>`.
-- `Exceptions\BulkActionsException`: a missing name, handler, model or URL, duplicate names, queueing inline bulk actions.
+- `Exceptions\BulkActionsException`: a missing name, handler, model or URL, duplicate names, queueing inline bulk actions, context that can't be stored.
 
 # Route macros
 

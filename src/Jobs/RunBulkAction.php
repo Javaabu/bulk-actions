@@ -19,9 +19,10 @@ use RuntimeException;
 use Throwable;
 
 /**
- * Runs a queued bulk action: rebuilds its BulkActions class for the user who
- * started it, then handles the records a chunk at a time, saving progress
- * and stopping when the run is cancelled. Retrying starts again.
+ * Runs a queued bulk action: rebuilds its BulkActions class with fromContext()
+ * and the context stored on the run, for the user who started it, then handles
+ * the records a chunk at a time, saving progress and stopping when the run is
+ * cancelled. Retrying starts again.
  */
 class RunBulkAction implements ShouldQueue
 {
@@ -114,7 +115,7 @@ class RunBulkAction implements ShouldQueue
             throw new RuntimeException("[{$class}] is not a BulkActions class.");
         }
 
-        return $class::make();
+        return $class::fromContext($run->context ?? []);
     }
 
     public function failed(?Throwable $exception): void

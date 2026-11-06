@@ -157,7 +157,7 @@ public function it_skips_articles_the_author_cannot_delete(): void
 - Scope records in `newQuery()`; ids outside it are ignored. Don't filter by permission inside the handler.
 - Handlers: `handle(fn (Collection $records, array $data, $user))` per chunk, or `each(fn (Article $article, array $data))` per record. Return a count from `handle()` only when some failed.
 - The table's `model`, the rows' `name` and the bulk actions' `getName()` must match (`articles`).
-- Queued runs need a class (not inline `BulkActions::make()`), a queue worker and `Route::bulkActionRuns()`. Validated form data is stored as JSON: no file uploads in queued actions (`->queue(false)`).
+- Queued runs need a class (not inline `BulkActions::make()`), a queue worker and `Route::bulkActionRuns()`. The job rebuilds the set with `fromContext($run->context)`: a class configured at runtime (`PostBulkActions::for($type)`) overrides `context()` (keys and scalars only, e.g. `['post_type' => $type->getKey()]`) and `fromContext()`; don't turn queueing off for it. Validated form data is stored as JSON: no file uploads in queued actions (`->queue(false)`).
 - Pass the paginator (`:paginator` / `->paginator()`) to offer "select all matching", and `filters()` so "all" means the filtered listing, not the whole table.
 - Every label, question and message through `__()`; Dhivehi in `lang/dv.json`; `->thaana()` on Dhivehi text fields.
 

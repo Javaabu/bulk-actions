@@ -14,6 +14,7 @@
 | `filterParameters(array)` | What "all matching" sends back; default from the filters or the query string |
 | `chunkSize(int)`, `queueAfter(bool\|int)` | Defaults for the actions |
 | `user(Authorizable)` | Default: the request's user |
+| `withContext(array)`, `context()`, `static fromContext(array)` | Context stored on a queued run and used to rebuild the set (scalars, nulls, arrays) |
 | `paginator(Paginator)`, `total(int)` | For "select all matching" |
 | `getActions()`, `getAction($name)`, `getAvailableActions()` | |
 | `execute(?Request): ActionResult`, `respond(?Request): Response` | Run from your own controller |

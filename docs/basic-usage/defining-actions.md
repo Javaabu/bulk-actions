@@ -61,7 +61,7 @@ $bulk_actions = BulkActions::make([
 ])->model(Article::class)->url(route('articles.bulk'));
 ```
 
-Inline bulk actions run during the request only: a queued run rebuilds the actions in the job, which needs a class. An inline action that would be queued throws a `BulkActionsException`; set `->queue(false)` on it, or move it to a class.
+Inline bulk actions run during the request only: a queued run rebuilds the actions in the job, which needs a class. A class configured at runtime (`PostBulkActions::for($post_type)`) keeps what it needs in its [context](../advanced-usage/queued-runs.md#sets-configured-at-runtime-context). An inline action that would be queued throws a `BulkActionsException`; set `->queue(false)` on it, or move it to a class.
 
 # The records
 
