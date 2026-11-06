@@ -3,8 +3,9 @@ name: tests
 on:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
+  # Started by hand, too: pushes didn't trigger runs while the repo was set up during a GitHub incident.
+  pull_request:
 
 concurrency:
   group: tests-${{ github.ref }}
