@@ -33,14 +33,14 @@
     "illuminate/support": "^12.0 || ^13.0",
     "illuminate/validation": "^12.0 || ^13.0",
     "illuminate/view": "^12.0 || ^13.0",
-    "javaabu/forms": "^2.0@dev",
-    "javaabu/manifest": "^1.0@dev",
-    "javaabu/permissions": "^3.0@dev",
-    "javaabu/stencil": "^1.0@dev"
+    "javaabu/forms": "^2.0@alpha",
+    "javaabu/manifest": "^1.0@alpha",
+    "javaabu/permissions": "^3.0@alpha",
+    "javaabu/stencil": "^1.0@alpha"
   },
   "require-dev": {
     "javaabu/boost-javaabu-guidelines": "^1.4",
-    "javaabu/filters": "^1.0@dev",
+    "javaabu/filters": "^1.0@alpha",
     "laravel/pint": "^1.24",
     "orchestra/testbench": "^10.0 || ^11.0",
     "phpunit/phpunit": "^11.5.3 || ^12.5.8"
@@ -74,33 +74,6 @@
       ]
     }
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/Javaabu/filters",
-      "no-api": true
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/Javaabu/forms",
-      "no-api": true
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/Javaabu/manifest",
-      "no-api": true
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/Javaabu/permissions",
-      "no-api": true
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/Javaabu/stencil",
-      "no-api": true
-    }
-  ],
   "config": {
     "sort-packages": true
   },
