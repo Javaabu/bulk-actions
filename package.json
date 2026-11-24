@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@javaabu/forms": "github:Javaabu/react-forms#next-gen",
-    "@javaabu/i18n": "github:Javaabu/i18n#build-on-git-install",
+    "@javaabu/forms": "^0.1.1",
+    "@javaabu/i18n": "^0.1.0",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",

@@ -12,11 +12,11 @@ importers:
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.14.0)
       '@javaabu/forms':
-        specifier: github:Javaabu/react-forms#next-gen
-        version: https://codeload.github.com/Javaabu/react-forms/tar.gz/9ba003a130a02bc5411a1e257c66a6c504a77d21(@inertiajs/react@2.3.29(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+        specifier: ^0.1.1
+        version: 0.1.1(@inertiajs/react@2.3.29(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@javaabu/i18n':
-        specifier: github:Javaabu/i18n#build-on-git-install
-        version: https://codeload.github.com/Javaabu/i18n/tar.gz/76730212d6f0f1d87a78635ed6e005dd5713cbba(react@19.3.1)
+        specifier: ^0.1.0
+        version: 0.1.0(react@19.3.1)
       '@testing-library/dom':
         specifier: ^10.4.1
         version: 10.4.2
@@ -286,9 +286,8 @@ packages:
       react: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.9.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  '@javaabu/forms@https://codeload.github.com/Javaabu/react-forms/tar.gz/9ba003a130a02bc5411a1e257c66a6c504a77d21':
-    resolution: {tarball: https://codeload.github.com/Javaabu/react-forms/tar.gz/9ba003a130a02bc5411a1e257c66a6c504a77d21}
-    version: 0.0.0
+  '@javaabu/forms@0.1.1':
+    resolution: {integrity: sha512-Ug8w1l0035gtEdAUhk5ZyjTd3SvBqYpRF8x+j1M1MqdhAaHU1Bio8ILhZV6oCvU4hWcFDhd7cCKDAW3rsEPCeA==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@inertiajs/react': ^2.0.0 || ^3.0.0
@@ -304,9 +303,8 @@ packages:
       '@testing-library/react':
         optional: true
 
-  '@javaabu/i18n@https://codeload.github.com/Javaabu/i18n/tar.gz/76730212d6f0f1d87a78635ed6e005dd5713cbba':
-    resolution: {tarball: https://codeload.github.com/Javaabu/i18n/tar.gz/76730212d6f0f1d87a78635ed6e005dd5713cbba}
-    version: 0.0.0
+  '@javaabu/i18n@0.1.0':
+    resolution: {integrity: sha512-Mfar10Jt/kNQnB2xjgQeDVjg+t8NAZotohUVYnU6U36WufsKbhoqDzlI9bQaygapbXha9HaU4K4W+Uj+KPsmnw==}
     engines: {node: '>=20.19'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
@@ -1313,6 +1311,7 @@ packages:
 
   tldts-core@7.4.20:
     resolution: {integrity: sha512-C630TWXZCZmLq0F2bW4QqwnaaxCQ/svpAqvJwnC4JvgEM5ohhBnGsEzTLSOXcN+xjz+kEaHS5uoWIw2klnqd0A==}
+    deprecated: Partial release, see https://github.com/remusao/tldts/issues/2735. Use >=7.4.22.
 
   tldts@7.4.19:
     resolution: {integrity: sha512-48dH6aSpQnpbzDUc4vIQZ1VjB8tkK+e8c1yx05/SZK+rkssgjEOlxDd/yU8/a4vGYQ9vRgJr9dwMq9TJ0b3X2Q==}
@@ -1741,9 +1740,9 @@ snapshots:
       - supports-color
     optional: true
 
-  '@javaabu/forms@https://codeload.github.com/Javaabu/react-forms/tar.gz/9ba003a130a02bc5411a1e257c66a6c504a77d21(@inertiajs/react@2.3.29(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+  '@javaabu/forms@0.1.1(@inertiajs/react@2.3.29(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(@testing-library/react@16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
     dependencies:
-      '@javaabu/i18n': https://codeload.github.com/Javaabu/i18n/tar.gz/76730212d6f0f1d87a78635ed6e005dd5713cbba(react@19.3.1)
+      '@javaabu/i18n': 0.1.0(react@19.3.1)
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
     optionalDependencies:
@@ -1752,7 +1751,7 @@ snapshots:
     transitivePeerDependencies:
       - vue
 
-  '@javaabu/i18n@https://codeload.github.com/Javaabu/i18n/tar.gz/76730212d6f0f1d87a78635ed6e005dd5713cbba(react@19.3.1)':
+  '@javaabu/i18n@0.1.0(react@19.3.1)':
     optionalDependencies:
       react: 19.3.1
 
